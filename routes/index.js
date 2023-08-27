@@ -105,6 +105,14 @@ router.get('/decode/:image', function (req, res, next) {
     res.render('index', get(req.params));
 });
 
+router.get('/encrypt', function (req, res, next) {
+    res.render("encrypt");
+});
+
+router.get('decrypt', function (req, res, next) {
+    res.render("decrypt");
+});
+
 router.get('/encode/:text', function (req, res, next) {
     res.render('index', get(req.params));
 });
