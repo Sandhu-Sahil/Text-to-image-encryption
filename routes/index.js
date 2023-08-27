@@ -109,7 +109,7 @@ router.get('/encrypt', function (req, res, next) {
     res.render("encrypt");
 });
 
-router.get('decrypt', function (req, res, next) {
+router.get('/decrypt', function (req, res, next) {
     res.render("decrypt");
 });
 

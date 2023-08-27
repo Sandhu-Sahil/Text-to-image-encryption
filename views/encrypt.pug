@@ -10,18 +10,7 @@ block content
         window.location.assign('/encode/' + encodeURIComponent(text));
     }
 
-    function decode() {
-      image = document.getElementById('image').files[0];
-      if (image) {
-        var reader = new FileReader();
-        reader.onloadend = function() {
-          window.location.assign('/decode/' + encodeURIComponent(reader.result));
-        }
-        reader.readAsDataURL(image);
-      }
-    }
-
-  h2(style='margin-top: 30px') Encrypt your text
+  h2 :: ENCRYPT YOUR TEXT ::
   textarea(id='text', style='width:400px')
   br
-  button(onclick='encode()', style='margin-top:2px') Encode
+  button(onclick='encode()', class='encrypt') Encode

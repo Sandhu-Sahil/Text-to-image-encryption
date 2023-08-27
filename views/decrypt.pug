@@ -4,12 +4,6 @@ block content
   
   script(type='text/javascript').
 
-    function encode() {
-      text = document.getElementById('text').value;
-      if (text)
-        window.location.assign('/encode/' + encodeURIComponent(text));
-    }
-
     function decode() {
       image = document.getElementById('image').files[0];
       if (image) {
@@ -21,6 +15,7 @@ block content
       }
     }
 
-  h2 Decrypt your image
+  h2 :: DECRYPT YOUR IMAGE ::
   input(id='image', type='file')
-  button(onclick='decode()', style='margin-left:5px') Decode
+  br
+  button(onclick='decode()', class='decrypt') Decode
