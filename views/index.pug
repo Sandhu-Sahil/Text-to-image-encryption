@@ -1,0 +1,45 @@
+extends layout
+
+block content
+  
+  script(type='text/javascript').
+
+    function encode() {
+      text = document.getElementById('text').value;
+      if (text)
+        window.location.assign('/encode/' + encodeURIComponent(text));
+    }
+
+    function decode() {
+      image = document.getElementById('image').files[0];
+      if (image) {
+        var reader = new FileReader();
+        reader.onloadend = function() {
+          window.location.assign('/decode/' + encodeURIComponent(reader.result));
+        }
+        reader.readAsDataURL(image);
+      }
+    }
+
+  br
+  img.image(id='logo', src='/pics/logo1.png', width=700)
+  br
+  img.image(id='encrypted-image', src=imageData, width=200, height=200)
+  br
+  a(href=imageData download='image' onclick='this.download=(new Date()).toISOString().replace(/-|T|:/g,"")')
+    button(class='save-buttn') Save this image
+  
+  h6 :: PLAIN TEXT STORED IN IMAGE ::
+  p(id='plain-text', style='white-space: pre-wrap') #{decoded}
+
+  h2(style='margin-top: 30px') Encrypt your text
+  textarea(id='text', style='width:400px')
+  br
+  button(onclick='encode()', style='margin-top:2px') Encode
+
+  h2(style='margin-top: 30px') Decrypt your image
+  input(id='image', type='file')
+  button(onclick='decode()', style='margin-left:5px') Decode
+
+  h2(style='margin-top: 30px')
+    a(href='/about') Read more
